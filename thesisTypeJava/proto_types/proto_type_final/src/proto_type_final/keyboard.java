@@ -21,20 +21,13 @@ import javax.swing.SwingConstants;
  * keyboard class
  * implememts Key Listener for Key Events
  * 
- * Proto-Type 1 Variation a
- * Creates a t9 like key setup and remaps the key input to the set output of keyplacement
- * Variation a uses the standard t9 setup with slight changes to the used characters and an additional delete button
+ * Proto-Type Final Version
  * @author Samuel Ebner
  */
 public class keyboard  implements KeyListener {
 	JLabel text_output = new JLabel("Please Enter your Text");
-	
-	//time tolerance for key-repetition
-	long difTolerance = 300;
-	long pause = 0;
-	long startTime;
-	long endTime;
-	Timer timer;
+	JLabel instructions = new JLabel();
+
 	
 	final int ONE = KeyEvent.VK_H;
 	final int TWO = KeyEvent.VK_T;
@@ -90,6 +83,9 @@ public class keyboard  implements KeyListener {
 			}
 		};
 	
+	//TODO guide
+	String instr = "+-------+-------+-------+ +-----+<br>" + 
+			"|&nbsp;";
 	
 	
 	/**
@@ -99,38 +95,6 @@ public class keyboard  implements KeyListener {
     	setup();
     	
     }
-	
-	
-	/**
-	 * nested class
-	 * @author Samuel Ebner
-	 */
-	class checkPause extends TimerTask{
-		private boolean hasStarted = false;
-
-		/**
-		 * checks if pause has expired or is still ongoing
-		 */
-	    public void run() {
-	        this.hasStarted = true;
-	        endTime = System.currentTimeMillis();
-	        if (endTime - startTime >= difTolerance) {
-	        	timer.cancel();	       
-//	        	setWord();
-	        }			
-	    }
-
-	    /**
-	     * No longer used
-	     * checks if the timer is still running 
-	     * @return boolean hasRunStarted
-	     */
-	    public boolean hasRunStarted() {
-	        return this.hasStarted;
-	    }
-
-	   
-	}
 	
 	
 	/**
@@ -156,7 +120,11 @@ public class keyboard  implements KeyListener {
 		case FOUR:
 			inputCombination.add(4);
 			break;
-		}	    
+		}	
+		
+		removeDuplicates(inputCombination);
+
+		instructions.setText("<html><p style=\"width:300px;text-align:center\">"+ instr +"</p></html>");
 
 	}
 	 
@@ -173,7 +141,7 @@ public class keyboard  implements KeyListener {
 		}    
 		
 		if(e.getKeyCode() == first_key) {
-			removeDuplicates(inputCombination);
+//			removeDuplicates(inputCombination);
 			
 			//all four pressed is delete
 			if(inputCombination.size() >= 4 && text.length() > 0 ) {
@@ -181,14 +149,18 @@ public class keyboard  implements KeyListener {
 				inputCombination.clear();
 
 			} else {
-				System.out.println(checkCombination(inputCombination));
-
-//				text += checkCombination(inputCombination);
+				char letter = getLetter(inputCombination);
+				
+				//only print letters and whitespaces
+				if (Character.isLetter(letter) || Character.isWhitespace(letter) || letter == '?' || letter == '.' || letter == ',') {
+					text += letter;
+				}
 			
 				inputCombination.clear();
 			
 			}
 			
+			//set output text
 			text_output.setText("<html><p style=\"width:250px\">"+ text +"</p></html>");
 		}
 		
@@ -200,7 +172,7 @@ public class keyboard  implements KeyListener {
 	 * @param list
 	 * @return
 	 */
-	char checkCombination(ArrayList<Integer> list) {
+	char getLetter(ArrayList<Integer> list) {
 		int[] combinationArray = {0,0,0};
 		if (list.size() >= 4)
 			list.subList(3, list.size()).clear();
@@ -260,29 +232,14 @@ public class keyboard  implements KeyListener {
     	text_output.setForeground(Color.white);
     	text_output.setFont(new Font("Courier New", Font.PLAIN, 18));
     	text_output.setVerticalAlignment(SwingConstants.CENTER);
-    	
-    	//guidance image
-    	String instr = "+-------+-------+-------+ +-----+<br>" + 
-    					"|&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;| |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>" + 
-    					"|&nbsp;&nbsp;.,!&nbsp;&nbsp;|&nbsp;&nbsp;abc&nbsp;&nbsp;|&nbsp;&nbsp;def&nbsp;&nbsp;| |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>" + 
-    					"+-------+-------+-------+ |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>" + 
-    					"|&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;| |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>" + 
-    					"|&nbsp;&nbsp;ghi&nbsp;&nbsp;|&nbsp;&nbsp;jkl&nbsp;&nbsp;|&nbsp;&nbsp;mno&nbsp;&nbsp;| |&nbsp;DEL&nbsp;|<br>" + 
-    					"+-------+-------+-------+ +-----+<br>" + 
-    					"|&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>" + 
-    					"|&nbsp;pqrs&nbsp;&nbsp;|&nbsp;&nbsp;tuv&nbsp;&nbsp;|&nbsp;&nbsp;wxyz&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>" + 
-    					"+-------+-------+-------+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>" + 
-    					"+-------+-------+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>" +
-    					"|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>" + 
-    					"|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPACE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>" + 
-    					"+-------+-------+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-    			
+    
     	//label guidance image
-    	JLabel instructions = new JLabel();
+    	
     	instructions.setForeground(Color.white);
     	instructions.setFont(new Font("Courier New", Font.PLAIN, 12));
-    	instructions.setText("<html><p style=\"width:300px;text-align:center\">"+ instr +"</p></html>");
     	instructions.setVerticalAlignment(SwingConstants.CENTER);
+		instructions.setText("<html><p style=\"width:300px;text-align:center\">"+ instr +"</p></html>");
+
     	
     	//placement of labels
     	Container c = window.getContentPane();
