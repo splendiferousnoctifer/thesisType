@@ -10,16 +10,13 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 /**
  * keyboard class
- * implememts Key Listener for Key Events
+ * Implements Key Listener for Key Events
  * 
  * Proto-Type Final Version
  * @author Samuel Ebner
@@ -128,7 +125,7 @@ public class keyboard  implements KeyListener {
 
 	}
 	 
-	
+	 
 	/**
 	 * Key event
 	 * checks for ESC and closes game
