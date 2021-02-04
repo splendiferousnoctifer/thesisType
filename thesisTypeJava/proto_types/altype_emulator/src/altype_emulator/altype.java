@@ -1,32 +1,31 @@
 package altype_emulator;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
 import java.util.ArrayList;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
+
 
 /**
- * keyboard class
+ * altype
+ * takes input from 4 buttons and remaps their connections to pre-set letters
  * Implements Key Listener for Key Events
  * 
- * Proto-Type Final Version
  * @author Samuel Ebner
  */
-public class keyboard  implements KeyListener, collection {
+public class altype implements KeyListener, collection {
+	JLabel text_output = new JLabel("Please Enter your Text");
+	 JLabel instructions = new JLabel();
+	
 	final int ONE = KeyEvent.VK_H;
 	final int TWO = KeyEvent.VK_T;
 	final int THREE = KeyEvent.VK_R;
 	final int FOUR = KeyEvent.VK_S;
+
+
 	
-	JLabel text_output = new JLabel("Please Enter your Text");
-	JLabel instructions = new JLabel();
+
 	
 	String text= "";
 	int first_key = 0;
@@ -36,13 +35,40 @@ public class keyboard  implements KeyListener, collection {
 	
 	/**
 	 * constructor
+	 * @param window 
+	 * @param text_output 
+	 * @param instructions 
 	 */
-    public keyboard(){
-    	setup();
+    public altype(JFrame window){
+    	window.addKeyListener(this);
     	
+    	//label text settings
+    	text_output.setHorizontalAlignment(JLabel.CENTER);
+    	text_output.setForeground(Color.white);
+    	text_output.setFont(new Font("Courier New", Font.PLAIN, 18));
+    	text_output.setVerticalAlignment(SwingConstants.CENTER);
+    
+    	//label guidance image
+    	instructions.setForeground(Color.white);
+    	instructions.setFont(new Font("Courier New", Font.PLAIN, 16));
+    	instructions.setVerticalAlignment(SwingConstants.CENTER);
+		instructions.setText("<html><p style=\"width:300px;text-align:center\">"+ guide.startGuide() +"</p></html>");    	
+    	
+    	//placement of labels
+    	Container c = window.getContentPane();
+        c.setLayout(new GridLayout(2,1));
+        window.add(text_output);   	
+    	window.add(instructions);
+    	
+    	createAltypeMenu(window);
+
+        window.pack();
+    	window.setVisible(true);
+    	window.setLocationRelativeTo(null);
     }
 	
-	
+
+
 	/**
 	 * key event that determines the depressed the combination
 	 * for any kind of key
@@ -72,6 +98,7 @@ public class keyboard  implements KeyListener, collection {
 		
 		//guide is set
 		instructions.setText("<html><p style=\"width:300px;text-align:center\">"+ guide.getGuide(inputCombination) +"</p></html>");
+
 
 
 	}
@@ -110,6 +137,7 @@ public class keyboard  implements KeyListener, collection {
 			
 			//set output text
 			text_output.setText("<html><p style=\"width:250px\">"+ text +"</p></html>");
+
 		}
 	}
 
@@ -126,46 +154,7 @@ public class keyboard  implements KeyListener, collection {
 	}
 	
 	
-    /**
-     * creates Frame and labels
-     * includes font and colour settings + guidance image
-     */
-    private void setup() {
-    	JFrame window = new JFrame("Proto-type 1"); 
-    	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	window.setLayout(new BorderLayout());
-    	
-    	//window settings
-    	window.setPreferredSize(new Dimension(400, 500));
-    	window.getContentPane().setBackground(Color.black);
-    	
-    	//label text settings
-    	text_output.setHorizontalAlignment(JLabel.CENTER);
-    	text_output.setForeground(Color.white);
-    	text_output.setFont(new Font("Courier New", Font.PLAIN, 18));
-    	text_output.setVerticalAlignment(SwingConstants.CENTER);
     
-    	//label guidance image
-    	
-    	instructions.setForeground(Color.white);
-    	instructions.setFont(new Font("Courier New", Font.PLAIN, 12));
-    	instructions.setVerticalAlignment(SwingConstants.CENTER);
-		instructions.setText("<html><p style=\"width:300px;text-align:center\">"+ guide.startGuide() +"</p></html>");
-
-    	
-    	//placement of labels
-    	Container c = window.getContentPane();
-        c.setLayout(new GridLayout(2,1));
-        window.add(text_output);
-    	
-    	//add keylistener
-    	window.addKeyListener(this);
-    	window.add(instructions);
-    	
-    	window.pack();
-    	window.setVisible(true);
-    	window.setLocationRelativeTo(null);
-    }
 
 
 

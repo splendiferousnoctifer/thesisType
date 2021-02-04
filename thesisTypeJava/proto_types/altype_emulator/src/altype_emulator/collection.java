@@ -1,11 +1,18 @@
 package altype_emulator;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.swing.*;
+
 public interface collection {
-	//lookuptable for combinations
+	/**
+	 * lookuptable for altype button combinations
+	 */
 	char[][][] alphabet = {
 			{
 				{ 0, 'a','j','s',' '},
@@ -51,6 +58,7 @@ public interface collection {
 	
 	/**
 	 * checks for combination and assigns letter
+	 * used by altype
 	 * @param list
 	 * @return
 	 */
@@ -71,6 +79,7 @@ public interface collection {
 	
 	/**
 	 * removes Duplicates of ArrayList
+	 * used by altype
 	 * @param <T>
 	 * @param list
 	 * @return
@@ -94,4 +103,38 @@ public interface collection {
         // return the list 
         return list; 
     }
+
+	/**
+	 * creates menu for altype
+	 * @param window
+	 */
+	default void createAltypeMenu(JFrame window) {
+		//create menu
+    	JMenuBar menuBarAltype = new JMenuBar();
+    	JMenu menuHelp = new JMenu("Help");
+    	JMenu menuAbout = new JMenu("About");
+    	
+        window.setJMenuBar(menuBarAltype);
+        
+        //menu options
+        JMenuItem menuItemManual = new JMenuItem("Manual");
+        menuBarAltype.add(menuHelp);
+
+        
+        //menu item selection action is set
+        menuItemManual.addActionListener(new ActionListener() {
+  			@Override
+			public void actionPerformed(ActionEvent arg0) {
+  				UIManager UI=new UIManager();
+  				UI.put("Panel.background", Color.black);
+  			
+  				JOptionPane.showMessageDialog(window,
+  					    "Eggs are not supposed to be green.",
+  					    "A plain message",
+  					    JOptionPane.PLAIN_MESSAGE);	
+			}
+        });
+        
+        menuHelp.add(menuItemManual);
+	}
 }
