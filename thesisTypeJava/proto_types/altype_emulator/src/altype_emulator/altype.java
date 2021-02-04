@@ -16,17 +16,13 @@ import java.util.ArrayList;
  */
 public class altype implements KeyListener, collection {
 	JLabel text_output = new JLabel("Please Enter your Text");
-	 JLabel instructions = new JLabel();
+	JLabel instructions = new JLabel();
 	
 	final int ONE = KeyEvent.VK_H;
 	final int TWO = KeyEvent.VK_T;
 	final int THREE = KeyEvent.VK_R;
 	final int FOUR = KeyEvent.VK_S;
 
-
-	
-
-	
 	String text= "";
 	int first_key = 0;
 
@@ -39,7 +35,8 @@ public class altype implements KeyListener, collection {
 	 * @param text_output 
 	 * @param instructions 
 	 */
-    public altype(JFrame window){
+    public altype(JFrame window, JMenuBar menubar){
+    	window.getContentPane().removeAll();
     	window.addKeyListener(this);
     	
     	//label text settings
@@ -60,14 +57,14 @@ public class altype implements KeyListener, collection {
         window.add(text_output);   	
     	window.add(instructions);
     	
-    	createAltypeMenu(window);
+    	createAltypeMenu(window, menubar);
+    	
 
         window.pack();
     	window.setVisible(true);
     	window.setLocationRelativeTo(null);
     }
 	
-
 
 	/**
 	 * key event that determines the depressed the combination
@@ -98,9 +95,6 @@ public class altype implements KeyListener, collection {
 		
 		//guide is set
 		instructions.setText("<html><p style=\"width:300px;text-align:center\">"+ guide.getGuide(inputCombination) +"</p></html>");
-
-
-
 	}
 	
 
@@ -141,8 +135,6 @@ public class altype implements KeyListener, collection {
 		}
 	}
 
-
-     
     
     /**
      * key Event
@@ -151,6 +143,96 @@ public class altype implements KeyListener, collection {
      */
 	public void keyTyped(KeyEvent e) {
 		
+	}
+	
+	/**
+	 * creates menu for altype
+	 * @param window
+	 */
+	void createAltypeMenu(JFrame window, JMenuBar menubar) {
+		// create menu
+		JMenuBar menuBarAltype = new JMenuBar();
+
+		window.setJMenuBar(menuBarAltype);
+		JMenu mainMenu = new JMenu("start");
+		JMenu settingsMenu = new JMenu("settings");
+        JMenu helpMenu = new JMenu("help");
+
+    	JMenuItem menuItemStart = new JMenuItem("start");
+    	JMenuItem menuItemExit = new JMenuItem("exit");
+    	JMenuItem menuItemSettings = new JMenuItem("change keys");
+    	JMenuItem menuItemHelp = new JMenuItem("help");
+
+    	
+        //menu options
+    	menuBarAltype.add(mainMenu);
+    	menuBarAltype.add(settingsMenu);
+    	menuBarAltype.add(helpMenu);
+
+        
+        //start - workaround
+        menuItemStart.addActionListener(new ActionListener() {
+  			@Override
+			public void actionPerformed(ActionEvent arg0) {
+  				window.getContentPane().removeAll();
+  				window.getContentPane().setLayout(new BorderLayout());
+  				JLabel start = new JLabel();
+  				String startText = "<b>	altype</b><br>"
+  						+ " keyboard - emulator<br><br><br>"
+  						+ "Select keyType to start!";
+  				
+  				start.setForeground(Color.white);
+  				start.setFont(new Font("Courier New", Font.PLAIN, 16));
+  				start.setHorizontalAlignment(JLabel.CENTER);
+  				start.setVerticalAlignment(SwingConstants.CENTER);
+  				
+  				start.setText("<html><p style=\"width:200px;text-align:left\">"+ startText +"</p></html>");
+  				  				
+  				window.setJMenuBar(menubar);
+  				window.add(start);
+  				window.pack();
+  				window.setVisible(true);
+  				window.setLocationRelativeTo(null);
+			}
+        });
+        
+        //exit
+        menuItemExit.addActionListener(new ActionListener() {
+  			@Override
+			public void actionPerformed(ActionEvent arg0) {
+  				System.exit(0);
+			}
+        });
+             
+        //TODO Explanation
+        menuItemHelp.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				UIManager UI = new UIManager();
+				UI.put("Panel.background", Color.black);
+				UI.put("OptionPane.background", Color.black);
+
+				JOptionPane.showMessageDialog(window,
+						"<html><font color=#ffffff face=\"Courier New\">Select a keyType to start.<br> For further information on keyTypes, <br> go to a keyType and click help.</font>",
+						"altype - help",
+						JOptionPane.PLAIN_MESSAGE);
+			}
+		});
+        
+        //TODO set own keys
+        menuItemSettings.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println("Settings selected");
+			}
+		});
+        
+        //menu item added to menu
+        mainMenu.add(menuItemStart);
+        mainMenu.add(menuItemExit);
+        settingsMenu.add(menuItemSettings);
+        helpMenu.add(menuItemHelp);
 	}
 	
 	

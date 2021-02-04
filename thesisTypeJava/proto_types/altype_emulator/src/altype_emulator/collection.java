@@ -1,13 +1,6 @@
 package altype_emulator;
+import java.util.*;
 
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.Set;
-
-import javax.swing.*;
 
 public interface collection {
 	/**
@@ -104,37 +97,11 @@ public interface collection {
         return list; 
     }
 
-	/**
-	 * creates menu for altype
-	 * @param window
-	 */
-	default void createAltypeMenu(JFrame window) {
-		//create menu
-    	JMenuBar menuBarAltype = new JMenuBar();
-    	JMenu menuHelp = new JMenu("Help");
-    	JMenu menuAbout = new JMenu("About");
-    	
-        window.setJMenuBar(menuBarAltype);
-        
-        //menu options
-        JMenuItem menuItemManual = new JMenuItem("Manual");
-        menuBarAltype.add(menuHelp);
+	
 
-        
-        //menu item selection action is set
-        menuItemManual.addActionListener(new ActionListener() {
-  			@Override
-			public void actionPerformed(ActionEvent arg0) {
-  				UIManager UI=new UIManager();
-  				UI.put("Panel.background", Color.black);
-  			
-  				JOptionPane.showMessageDialog(window,
-  					    "Eggs are not supposed to be green.",
-  					    "A plain message",
-  					    JOptionPane.PLAIN_MESSAGE);	
-			}
-        });
-        
-        menuHelp.add(menuItemManual);
-	}
+
+	
+	
+	
+	
 }
