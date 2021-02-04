@@ -1,4 +1,4 @@
-package proto_type_final;
+package altype_emulator;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
