@@ -1,4 +1,5 @@
 package altype_emulator;
+import java.awt.event.KeyEvent;
 import java.util.*;
 
 
@@ -98,7 +99,55 @@ public interface collection {
     }
 
 	
+	/**
+	 * define key codes for keys t9
+	 */
+	final int ONE = KeyEvent.VK_7;
+	final int TWO = KeyEvent.VK_8;
+	final int THREE = KeyEvent.VK_9;
+	final int FOUR = KeyEvent.VK_4;
+	final int FIVE = KeyEvent.VK_5;
+	final int SIX = KeyEvent.VK_6;
+	final int SEVEN = KeyEvent.VK_1;
+	final int EIGHT = KeyEvent.VK_2;
+	final int NINE = KeyEvent.VK_3;
+	final int ZERO = KeyEvent.VK_0;
 
+		
+
+	/**
+	 * key lookup table for t9
+	 */
+	char[] k48 = {' ','0'};
+	char[] k49 = {'.',',','!', '1'};
+	char[] k50 = {'a','b','c', '2'};
+	char[] k51 = {'d','e','f', '3'};
+	char[] k52 = {'g','h','i', '4'};
+	char[] k53 = {'j','k','l', '5'};
+	char[] k54 = {'m','n','o', '6'};
+	char[] k55 = {'p','q','r','s', '7'};
+	char[] k56 = {'t','u','v', '8'};
+	char[] k57 = {'w','x','y','z', '9'};
+	
+	
+	/**
+	 * guidance image for t9
+	 */
+	String instr = "+-------+-------+-------+ +-----+<br>" + 
+					"|&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;| |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>" + 
+					"|&nbsp;&nbsp;.,!&nbsp;&nbsp;|&nbsp;&nbsp;abc&nbsp;&nbsp;|&nbsp;&nbsp;def&nbsp;&nbsp;| |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>" + 
+					"+-------+-------+-------+ |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>" + 
+					"|&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;| |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>" + 
+					"|&nbsp;&nbsp;ghi&nbsp;&nbsp;|&nbsp;&nbsp;jkl&nbsp;&nbsp;|&nbsp;&nbsp;mno&nbsp;&nbsp;| |&nbsp;DEL&nbsp;|<br>" + 
+					"+-------+-------+-------+ +-----+<br>" + 
+					"|&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>" + 
+					"|&nbsp;pqrs&nbsp;&nbsp;|&nbsp;&nbsp;tuv&nbsp;&nbsp;|&nbsp;&nbsp;wxyz&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>" + 
+					"+-------+-------+-------+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>" + 
+					"+-------+-------+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>" +
+					"|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>" + 
+					"|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SPACE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>" + 
+					"+-------+-------+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+		
 
 	
 	

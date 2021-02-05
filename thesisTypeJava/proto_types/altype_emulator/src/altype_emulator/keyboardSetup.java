@@ -6,24 +6,21 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-
 import javax.swing.*;
 
-public class setup implements collection{
+public class keyboardSetup{
 	JFrame window = new JFrame("altype - emulator");
 	JMenuBar menuBar = new JMenuBar();
 
-	boolean altype = false;
-	
-
-	
 	altype altypeKeyboard;
+	tnine tnine;
+	
 	
 	/**
      * creates Frame and labels
      * includes font and colour settings + guidance image
      */
-    public setup() {
+    public keyboardSetup() {
     	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	window.setLayout(new BorderLayout());
     	
@@ -37,10 +34,8 @@ public class setup implements collection{
     	window.pack();
     	window.setVisible(true);
     	window.setLocationRelativeTo(null);
-    	
-    	
-    	
     }
+    
     
     /**
      * creates main menu
@@ -49,18 +44,19 @@ public class setup implements collection{
     	window.setJMenuBar(menuBar);
     	menuBar.removeAll();
     	
+    	//Menu Options
 		JMenu mainMenu = new JMenu("keyType");
 		JMenu aboutMenu = new JMenu("about");
         JMenu helpMenu = new JMenu("help");
 
+        //Menu Items
     	JMenuItem menuItemAltype = new JMenuItem("altype");
     	JMenuItem menuItemT9 = new JMenuItem("t9 - like");
     	JMenuItem menuItemAbout = new JMenuItem("about");
     	JMenuItem menuItemContact = new JMenuItem("contact");
     	JMenuItem menuItemHelp = new JMenuItem("help");
-
     	
-        //menu options
+        //menu options added to menu bar
         menuBar.add(mainMenu);
         menuBar.add(aboutMenu);
         menuBar.add(helpMenu);
@@ -77,8 +73,7 @@ public class setup implements collection{
         menuItemT9.addActionListener(new ActionListener() {
   			@Override
 			public void actionPerformed(ActionEvent arg0) {
-  				//TODO t9
-  				System.out.println("t9 selected");
+  				tnine = new tnine(window, menuBar);
 			}
         });
         
@@ -95,7 +90,7 @@ public class setup implements collection{
 			public void actionPerformed(ActionEvent e) {
 				Desktop desktop = Desktop.getDesktop(); 
 				   try {
-					desktop.mail(new URI("mailto:s1810238017@students.fh-hagenberg.at"));
+					desktop.mail(new URI("mailto:s1810238017@students.fh-hagenberg.at?subject=altype%20-%20thesis%20project"));
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				} catch (URISyntaxException e1) {
@@ -108,9 +103,8 @@ public class setup implements collection{
         menuItemHelp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				UIManager UI = new UIManager();
-				UI.put("Panel.background", Color.black);
-				UI.put("OptionPane.background", Color.black);
+				UIManager.put("Panel.background", Color.black);
+				UIManager.put("OptionPane.background", Color.black);
 
 				JOptionPane.showMessageDialog(window, "<html><font color=#ffffff face=\"Courier New\">Select a keyType to start.<br> For further information on keyTypes, <br> go to a keyType and click help.</font>", "help",
 						JOptionPane.PLAIN_MESSAGE);
@@ -154,6 +148,7 @@ public class setup implements collection{
     
 	}
     
+	
     /**
 	 * creates about screen
 	 * @param window
@@ -182,7 +177,5 @@ public class setup implements collection{
 		window.setLocationRelativeTo(null);
 			
 	}
-
-
 
 }

@@ -18,10 +18,20 @@ public class altype implements KeyListener, collection {
 	JLabel text_output = new JLabel("Please Enter your Text");
 	JLabel instructions = new JLabel();
 	
-	final int ONE = KeyEvent.VK_H;
-	final int TWO = KeyEvent.VK_T;
-	final int THREE = KeyEvent.VK_R;
-	final int FOUR = KeyEvent.VK_S;
+	boolean keyboardUsed = true;
+	
+	//when keyboard is used
+	final int ONE_KEYBOARD = KeyEvent.VK_H;
+	final int TWO_KEYBOARD = KeyEvent.VK_T;
+	final int THREE_KEYBOARD = KeyEvent.VK_R;
+	final int FOUR_KEYBOARD = KeyEvent.VK_S;
+	
+	//TODO change to correct keyEvents
+	//when handheld device is used
+	final int ONE_HANDHELD = KeyEvent.VK_H;
+	final int TWO_HANDHELD = KeyEvent.VK_T;
+	final int THREE_HANDHELD = KeyEvent.VK_R;
+	final int FOUR_HANDHELD = KeyEvent.VK_S; 
 
 	String text= "";
 	int first_key = 0;
@@ -76,20 +86,37 @@ public class altype implements KeyListener, collection {
 		first_key = e.getKeyCode();
 		
 		//which key is pressed
-		switch(e.getKeyCode()){
-		case ONE:
-			inputCombination.add(1);
-			break;
-		case TWO:
-			inputCombination.add(2);
-			break;
-		case THREE:
-			inputCombination.add(3);
-			break;
-		case FOUR:
-			inputCombination.add(4);
-			break;
-		}	
+		if(keyboardUsed) {
+			switch(e.getKeyCode()){
+			case ONE_KEYBOARD:
+				inputCombination.add(1);
+				break;
+			case TWO_KEYBOARD:
+				inputCombination.add(2);
+				break;
+			case THREE_KEYBOARD:
+				inputCombination.add(3);
+				break;
+			case FOUR_KEYBOARD:
+				inputCombination.add(4);
+				break;
+			}	
+		} else {
+			switch(e.getKeyCode()){
+			case ONE_HANDHELD:
+				inputCombination.add(1);
+				break;
+			case TWO_HANDHELD:
+				inputCombination.add(2);
+				break;
+			case THREE_HANDHELD:
+				inputCombination.add(3);
+				break;
+			case FOUR_HANDHELD:
+				inputCombination.add(4);
+				break;
+			}	
+		}
 		
 		removeDuplicates(inputCombination);
 		
@@ -105,7 +132,6 @@ public class altype implements KeyListener, collection {
 	public void keyReleased(KeyEvent e) {
 		//esc exit
 		if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
-			System.out.println("bye!");
 			System.exit(0);
 		}    
 		
@@ -145,6 +171,7 @@ public class altype implements KeyListener, collection {
 		
 	}
 	
+	
 	/**
 	 * creates menu for altype
 	 * @param window
@@ -152,19 +179,22 @@ public class altype implements KeyListener, collection {
 	void createAltypeMenu(JFrame window, JMenuBar menubar) {
 		// create menu
 		JMenuBar menuBarAltype = new JMenuBar();
-
 		window.setJMenuBar(menuBarAltype);
+
+		//menu options
 		JMenu mainMenu = new JMenu("start");
 		JMenu settingsMenu = new JMenu("settings");
         JMenu helpMenu = new JMenu("help");
 
+        //menu items
     	JMenuItem menuItemStart = new JMenuItem("start");
     	JMenuItem menuItemExit = new JMenuItem("exit");
-    	JMenuItem menuItemSettings = new JMenuItem("change keys");
+    	JMenuItem menuItemKeyboard = new JMenuItem("keyboard");
+    	JMenuItem menuItemHandheld = new JMenuItem("handheld");
     	JMenuItem menuItemHelp = new JMenuItem("help");
 
     	
-        //menu options
+        //menu options are set to menu bar
     	menuBarAltype.add(mainMenu);
     	menuBarAltype.add(settingsMenu);
     	menuBarAltype.add(helpMenu);
@@ -195,8 +225,7 @@ public class altype implements KeyListener, collection {
   				window.setLocationRelativeTo(null);
 			}
         });
-        
-        //exit
+
         menuItemExit.addActionListener(new ActionListener() {
   			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -208,9 +237,8 @@ public class altype implements KeyListener, collection {
         menuItemHelp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				UIManager UI = new UIManager();
-				UI.put("Panel.background", Color.black);
-				UI.put("OptionPane.background", Color.black);
+				UIManager.put("Panel.background", Color.black);
+				UIManager.put("OptionPane.background", Color.black);
 
 				JOptionPane.showMessageDialog(window,
 						"<html><font color=#ffffff face=\"Courier New\">Select a keyType to start.<br> For further information on keyTypes, <br> go to a keyType and click help.</font>",
@@ -219,28 +247,26 @@ public class altype implements KeyListener, collection {
 			}
 		});
         
-        //TODO set own keys
-        menuItemSettings.addActionListener(new ActionListener() {
+        menuItemKeyboard.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				System.out.println("Settings selected");
+				keyboardUsed = true;
+			}
+		});
+        
+        menuItemHandheld.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				keyboardUsed = false;
 			}
 		});
         
         //menu item added to menu
         mainMenu.add(menuItemStart);
         mainMenu.add(menuItemExit);
-        settingsMenu.add(menuItemSettings);
+        settingsMenu.add(menuItemKeyboard);
+        settingsMenu.add(menuItemHandheld);
         helpMenu.add(menuItemHelp);
 	}
 	
-	
-    
-
-
-
-
-
- 
 }
