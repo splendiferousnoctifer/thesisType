@@ -28,10 +28,10 @@ public class altype implements KeyListener, collection {
 	
 	//TODO change to correct keyEvents
 	//when handheld device is used
-	final int ONE_HANDHELD = KeyEvent.VK_H;
-	final int TWO_HANDHELD = KeyEvent.VK_T;
-	final int THREE_HANDHELD = KeyEvent.VK_R;
-	final int FOUR_HANDHELD = KeyEvent.VK_S; 
+	final int ONE_HANDHELD = 97;
+	final int TWO_HANDHELD = 98;
+	final int THREE_HANDHELD = KeyEvent.VK_L;
+	final int FOUR_HANDHELD = KeyEvent.VK_A; 
 
 	String text= "";
 	int first_key = 0;
@@ -182,12 +182,12 @@ public class altype implements KeyListener, collection {
 		window.setJMenuBar(menuBarAltype);
 
 		//menu options
-		JMenu mainMenu = new JMenu("start");
+		JMenu mainMenu = new JMenu("home");
 		JMenu settingsMenu = new JMenu("settings");
         JMenu helpMenu = new JMenu("help");
 
         //menu items
-    	JMenuItem menuItemStart = new JMenuItem("start");
+    	JMenuItem menuItemStart = new JMenuItem("home");
     	JMenuItem menuItemExit = new JMenuItem("exit");
     	JMenuItem menuItemKeyboard = new JMenuItem("keyboard");
     	JMenuItem menuItemHandheld = new JMenuItem("handheld");
@@ -240,10 +240,14 @@ public class altype implements KeyListener, collection {
 				UIManager.put("Panel.background", Color.black);
 				UIManager.put("OptionPane.background", Color.black);
 
-				JOptionPane.showMessageDialog(window,
-						"<html><font color=#ffffff face=\"Courier New\">Select a keyType to start.<br> For further information on keyTypes, <br> go to a keyType and click help.</font>",
-						"altype - help",
-						JOptionPane.PLAIN_MESSAGE);
+				
+				JLabel label = new JLabel("altype - help");
+				label.setFont(new Font("Courier New", Font.PLAIN, 16));
+				label.setText(altypeHelp);
+				label.setForeground(Color.white);
+				
+				JOptionPane.showMessageDialog(window, label, "altype - help", JOptionPane.PLAIN_MESSAGE);
+				
 			}
 		});
         

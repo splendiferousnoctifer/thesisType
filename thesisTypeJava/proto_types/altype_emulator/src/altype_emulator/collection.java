@@ -151,6 +151,20 @@ public interface collection {
 
 	
 	
+	String tnineHelp = "<html>The layout works similar to the t9 layout. <br> "
+			+ "The numbers on the keypad are used here. <br>"
+			+ "The amount of consecutive key-presses determine the letter. <br>"
+			+ "You can see the remap chart down below. <br>"
+			+ "eg. press Key 2(Numpad 8) twice for a b.";
+	
+	String altypeHelp = "<html>The letters are entered by a combinations of keys. <br>"
+			+ "On the screen you see four options corresponding to each button. <br>"
+			+ "The letter that is underlined is chosen if only that key is pressed.<br>"
+			+ "If a key is pressed, the options change. Again, if the letter is<br>"
+			+ "underlined, if you press that key additionally and let go, this letter <br>"
+			+ "is chosen and entered.<br><br>"
+			+ "Depending on your input device, please choose in Settings.<br>"
+			+ "Standard is Keyboard. The four keys are H, T, R and S.";
 	
 	
 }

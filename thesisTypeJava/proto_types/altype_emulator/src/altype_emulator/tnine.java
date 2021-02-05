@@ -87,49 +87,57 @@ public class tnine  implements KeyListener, collection {
 	    }
 	    
 		
-		/*
-		 * check which key is pressed and preset to right key map
-		 * TODO: improve if-else cascade to switch case?
-		 */
-		if (e.getKeyChar() == ZERO) {
-	        // 0
+		// check which key is pressed and preset to right key map
+		switch(e.getKeyChar()) {
+		case ZERO:
+		    // 0
 	        // space    
-	        activeKey = k48;    
-	    } else if (e.getKeyChar() == ONE) {
+	        activeKey = k48;   
+	        break;
+		case ONE:
 	        // 1
 	        activeKey = k49;
-	    } else if (e.getKeyChar() == TWO) {
+	        break;
+		case TWO:
 	        // 2
 	        // a b c
 	        activeKey = k50;
-	    } else if (e.getKeyChar() == THREE) {
+	        break;
+		case THREE:
 	        // 3
 	        // d e f
 	        activeKey = k51;
-	    } else if (e.getKeyChar() == FOUR) {
+	        break;
+		case FOUR:
 	        // 4
 	        // g h i
 	        activeKey = k52;
-	    } else if (e.getKeyChar() == FIVE) {
+	        break;
+		case FIVE:
 	        // 5
 	        // j k l
 	        activeKey = k53;
-	    } else if (e.getKeyChar() == SIX) {
+	        break;
+		case SIX:
 	        // 6
 	        // m n o
 	        activeKey = k54;
-	    } else if (e.getKeyChar() == SEVEN) {
+	        break;
+		case SEVEN:
 	        // 7
 	        // p q r s
 	        activeKey = k55;
-	    } else if (e.getKeyChar() == EIGHT) {
+	        break;
+		case EIGHT:
 	        // 8
 	        // t u v
-	        activeKey = k56;    
-	    } else if (e.getKeyChar() == NINE) {
+	        activeKey = k56;
+	        break;
+		case NINE:
 	        // 9
 	        // w x y z
 	        activeKey = k57;
+	        break;
 	    }
 
 
@@ -218,10 +226,10 @@ public class tnine  implements KeyListener, collection {
 		JMenuBar menuBarT9 = new JMenuBar();
 
 		window.setJMenuBar(menuBarT9);
-		JMenu mainMenu = new JMenu("start");
+		JMenu mainMenu = new JMenu("home");
         JMenu helpMenu = new JMenu("help");
 
-    	JMenuItem menuItemStart = new JMenuItem("start");
+    	JMenuItem menuItemStart = new JMenuItem("home");
     	JMenuItem menuItemExit = new JMenuItem("exit");
     	JMenuItem menuItemHelp = new JMenuItem("help");
 
@@ -265,17 +273,20 @@ public class tnine  implements KeyListener, collection {
 			}
         });
              
-        //TODO Explanation
         menuItemHelp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				UIManager.put("Panel.background", Color.black);
 				UIManager.put("OptionPane.background", Color.black);
 
-				JOptionPane.showMessageDialog(window,
-						"<html><font color=#ffffff face=\"Courier New\">Select a keyType to start.<br> For further information on keyTypes, <br> go to a keyType and click help.</font>",
-						"altype - help",
-						JOptionPane.PLAIN_MESSAGE);
+				
+				JLabel label = new JLabel("t9 - help");
+				label.setFont(new Font("Courier New", Font.PLAIN, 16));
+				label.setText(tnineHelp);
+				label.setForeground(Color.white);
+				
+				JOptionPane.showMessageDialog(window, label, "t9 - help", JOptionPane.PLAIN_MESSAGE);
+				
 			}
 		});
         
