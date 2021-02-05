@@ -26,7 +26,6 @@ public class altype implements KeyListener, collection {
 	final int THREE_KEYBOARD = KeyEvent.VK_R;
 	final int FOUR_KEYBOARD = KeyEvent.VK_S;
 	
-	//TODO change to correct keyEvents
 	//when handheld device is used
 	final int ONE_HANDHELD = 97;
 	final int TWO_HANDHELD = 98;
@@ -233,7 +232,6 @@ public class altype implements KeyListener, collection {
 			}
         });
              
-        //TODO Explanation
         menuItemHelp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
