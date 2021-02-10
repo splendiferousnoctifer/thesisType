@@ -1,0 +1,57 @@
+table 10 books
+1.	e	with 12,02%	-   (3346144) in total
+2.	t	with 9,10%	-   (2533270 in total
+3.	a	with 8,12%	-   (2260457) in total
+4.	o	with 7,68%	-   (2137969) in total
+5.	i	with 7,31%	-   (2034968) in total
+6.	n	with 6,95%	-   (1934750) in total
+7.	s	with 6,28%	-   (1748235) in total
+8.	r	with 6,02%	-   (1675856) in total
+9.	h	with 5,92%	-   (1648018) in total
+10.	d	with 4,32%	-   (1202607) in total
+11.	l	with 3,98%	-   (1107958) in total
+12.	u	with 2,88%	-   (801738) in total
+13.	c	with 2,71%	-   (754413) in total
+14.	m	with 2,61%	-   (726575) in total
+15.	f	with 2,30%	-   (640277) in total
+16.	y	with 2,11%	-   (587385) in total
+17.	w	with 2,09%	-   (581817) in total
+18.	g	with 2,03%	-   (565114) in total
+19.	p	with 1,82%	-   (506654)  in total
+20.	b	with 1,49%	-   (414788) in total
+21.	v	with 1,11%	-   (309003) in total
+22.	k	with 0,69%	-   (192083) in total
+23.	x	with 0,17%	-   (47325) in total
+24.	q	with 0,11%	-   (30622) in total
+25.	j	with 0,10%	-   (27838) in total
+26.	z	with 0,08%	-   (22271) in total
+sum		100,00%	-   (27838135)
+
+table whatsapp
+1. 	e	with 13.2 %	- (90182) in total
+2. 	n	with 9.0 %	- (61247) in total
+3. 	i	with 8.6 %	- (58393) in total
+4. 	a	with 8.5 %	- (58223) in total
+5. 	s	with 7.0 %	- (47673) in total
+6. 	t	with 6.3 %	- (42673) in total
+7. 	r	with 5.8 %	- (39216) in total
+8. 	d	with 5.3 %	- (36167) in total
+9. 	h	with 5.1 %	- (34455) in total
+10. 	m	with 4.3 %	- (29579) in total
+11. 	o	with 3.7 %	- (25272) in total
+12. 	u	with 3.5 %	- (24033) in total
+13. 	l	with 3.4 %	- (23034) in total
+14. 	c	with 2.9 %	- (19949) in total
+15. 	g	with 2.8 %	- (18869) in total
+16. 	b	with 2.2 %	- (14910) in total
+17. 	w	with 2.0 %	- (13645) in total
+18. 	k	with 1.5 %	- (9969) in total
+19. 	f	with 1.5 %	- (9945) in total
+20. 	z	with 1.0 %	- (6965) in total
+21. 	p	with 0.9 %	- (5998) in total
+22. 	v	with 0.7 %	- (4868) in total
+23. 	j	with 0.6 %	- (3939) in total
+24. 	y	with 0.2 %	- (1297) in total
+25. 	x	with 0.1 %	- (565) in total
+26. 	q	with 0.0 %	- (142) in total
+sum		100% 		- (681208)
