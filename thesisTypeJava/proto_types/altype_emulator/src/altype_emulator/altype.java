@@ -76,7 +76,7 @@ public class altype implements KeyListener, collection {
 	
 
 	/**
-	 * key event that determines the depressed the combination
+	 * key event that determines the depressed combination
 	 * for any kind of key
 	 */
 	public void keyPressed(KeyEvent e) {
