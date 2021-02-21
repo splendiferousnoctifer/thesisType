@@ -21,14 +21,14 @@ public class altype implements KeyListener, collection {
 
 	long start;
 	long end;
-	double secPerCharacter;
+	double secPerSentence;
 	double tempWpm = 0;
 	double wpm;
 	double cpm;
 	double wpmCounter = 0;
 	
 	boolean keyboardUsed = true;
-	boolean startOfWord = true;
+	boolean startOfSentence = true;
 	
 	//when keyboard is used
 	final int ONE_KEYBOARD = KeyEvent.VK_H;
@@ -103,8 +103,9 @@ public class altype implements KeyListener, collection {
 		//first key that is pressed
 		first_key = e.getKeyCode();
 		
-		if(startOfWord) {
+		if(startOfSentence) {
 			start = System.currentTimeMillis();
+//			System.out.println(start);
 		}
 		
 		//which key is pressed
@@ -112,21 +113,21 @@ public class altype implements KeyListener, collection {
 			switch(e.getKeyCode()){
 			case ONE_KEYBOARD:
 				inputCombination.add(1);
-				startOfWord = false;
+				startOfSentence = false;
 				break;
 			case TWO_KEYBOARD:
 				inputCombination.add(2);
-				startOfWord = false;
+				startOfSentence = false;
 
 				break;
 			case THREE_KEYBOARD:
 				inputCombination.add(3);
-				startOfWord = false;
+				startOfSentence = false;
 
 				break;
 			case FOUR_KEYBOARD:
 				inputCombination.add(4);
-				startOfWord = false;
+				startOfSentence = false;
 
 				break;
 			}	
@@ -177,15 +178,18 @@ public class altype implements KeyListener, collection {
 					text += letter;
 				}
 				
-				if (Character.isWhitespace(letter)) {
+				if (letter == '.') {
 					end = System.currentTimeMillis();
-					secPerCharacter = ((double)end - (double)start)/1000;
-					startOfWord = true;
+//					System.out.println(end);
+					secPerSentence = ((double)end - (double)start)/1000;
+					startOfSentence = true;
 					
-					cpm = 60/secPerCharacter;
-					tempWpm += cpm;
-					wpmCounter++;
-					wpm = (tempWpm/wpmCounter)/5;
+					double secPerChar = secPerSentence/(text.length()-1);
+					
+					cpm = 60/secPerChar;
+					wpm = cpm/5;
+					text_output.setText("<html><p style=\"width:250px\">"+ text +"</p></html>"); text = "";
+
 				}
 			}
 			
@@ -197,7 +201,8 @@ public class altype implements KeyListener, collection {
 			instructions.setText("<html><p style=\"width:300px;text-align:center\">"+ guide.startGuide() +"</p></html>");
 			
 			//set output text
-			text_output.setText("<html><p style=\"width:250px\">"+ text +"</p></html>");
+			if(!startOfSentence)
+				text_output.setText("<html><p style=\"width:250px\">"+ text +"</p></html>");
 			
 			
 			usability.setText("<html><p style=\"width:300px;text-align:center\">" + String.format("cpm: %.1f <br> wpm: %.2f", cpm,wpm) + " </p></html>");    	

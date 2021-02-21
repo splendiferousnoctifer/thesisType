@@ -1,0 +1,48 @@
+my watch fell in the water
+	cpm 31,9
+	wpm 6,37
+	acc 96,15
+
+prevailing wind from the east
+	cpm 23,8
+	wpm 4,76
+	acc 93,10
+
+never too rich and never too thin
+	cpm 35,9
+	wpm 7,18
+	acc 96,96
+
+breathing is difficult
+	cpm 32,1
+	wpm 6,42
+	acc 86,36
+
+I can see the rings on Saturn
+	cpm 32,5
+	wpm 6,51
+	acc 93,10
+
+physics and chemistry are hard
+	cpm 26,2
+	wpm 5,25
+	acc 93,75
+
+my bank account is overdrawn
+	cpm 26,4
+	wpm 5,29
+	acc 89,28
+
+elections bring out the best
+	cpm 33,3
+	wpm 6,65
+	acc 96,55
+
+
+
+
+
+
+
+
+
