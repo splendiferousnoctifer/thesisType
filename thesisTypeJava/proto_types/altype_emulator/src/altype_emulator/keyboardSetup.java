@@ -1,5 +1,4 @@
 package altype_emulator;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +7,11 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import javax.swing.*;
 
+/**
+ * creates Frames and manages setup
+ * @author Samuel Ebner
+ * @version 1.5 - 2021.01.18
+ */
 public class keyboardSetup{
 	JFrame window = new JFrame("altype - emulator");
 	JMenuBar menuBar = new JMenuBar();

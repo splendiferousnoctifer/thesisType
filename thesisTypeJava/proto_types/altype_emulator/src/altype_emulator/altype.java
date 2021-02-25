@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * Implements Key Listener for Key Events
  * 
  * @author Samuel Ebner
+ * @version 1.5 - 2021.01.18
  */
 public class altype implements KeyListener, collection {
 	JLabel text_output = new JLabel("Please Enter your Text");
@@ -120,7 +121,8 @@ public class altype implements KeyListener, collection {
 		removeDuplicates(inputCombination);
 		
 		//guide is set
-		instructions.setText("<html><p style=\"width:300px;text-align:center\">"+ guide.getGuide(inputCombination) +"</p></html>");
+		instructions.setText("<html><p style=\"width:300px;text-align:center\">"
+		+ guide.getGuide(inputCombination) +"</p></html>");
 	}
 	
 
@@ -137,15 +139,14 @@ public class altype implements KeyListener, collection {
 		//if the first depressed key is let go
 		if(e.getKeyCode() == first_key) {
 			//all four pressed is delete
-			if(inputCombination.size() >= 4 && text.length() > 0 ) {
+			if(inputCombination.size() >= 4 && text.length() > 0 )
 				text = text.substring(0, text.length() -1);
-			} else {
+			else {
 				char letter = getLetter(inputCombination);
 				
 				//only print letters and whitespaces
-				if (Character.isLetter(letter) || Character.isWhitespace(letter) || letter == '?' || letter == '.' || letter == ',') {
-					text += letter;
-				}				
+				if (Character.isLetter(letter) || Character.isWhitespace(letter) || letter == '?' || letter == '.' || letter == ',')
+					text += letter;			
 			}
 			
 			//combination is cleared

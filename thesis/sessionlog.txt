@@ -1,0 +1,90 @@
+participant: 				***
+age:					***
+dominant hand:				left
+language:				en
+---------------------------------------------------------
+session:	1	phrases:	4
+date:		*****
+---------------------------------------------------------
+avg wpm:
+	session 01: 4,055	
+	session 02: -
+	session 03: -
+	session 04: -
+	session 05: -
+	session 06: -
+	session 07: -
+	session 08: -
+	session 09: -
+	session 10: -
+highest wpm:
+	5,42 - session 01
+	
+avg err:
+	session 01: 16,61 %	
+	session 02: -
+	session 03: -
+	session 04: -
+	session 05: -
+	session 06: -
+	session 07: -
+	session 08: -
+	session 09: -
+	session 10: -
+lowest err:
+	13,68% - session 01
+---------------------------------------------------------
+---------------------------------------------------------
+phrase:	01
+	hand:	left
+	state:	normal
+	phrase shown:	my watch fell in the water?
+	transcribed:	ly watdhfeml hn the wateq?
+	MSD:		5
+	results:
+		cpm:	13,90
+		wpm:	2,78
+		acc:	83,15%
+		err:	16,85%
+---------------------------------------------------------
+phrase:	02
+	hand:	left
+	state:	blind
+	phrase shown:	prevailing wind from the east.
+	transcribed:	peuailinf wikd fom the east.
+	MSD:		5
+	results:
+		cpm:	23,65
+		wpm:	4,73
+		acc:	84,10%
+		err:	15,90%
+---------------------------------------------------------
+pause - 5 min
+---------------------------------------------------------
+phrase:	03
+	hand:	right
+	state:	normal
+	phrase shown:	never too rich and never too thin.
+	transcribed:	neue tko qich anc  nevhr too thhn.
+	MSD:		7
+	results:
+		cpm:	16,45
+		wpm:	3,29
+		acc:	79,96%
+		err: 	20,04%
+---------------------------------------------------------
+phrase:	04	
+	hand:	right
+	state:	blind
+	phrase shown:	breathing is difficult,
+	transcribed:	bqeathinf is difficult.
+	MSD:		3
+	results:
+		cpm: 	27,10
+		wpm: 	5,42
+		acc: 	86,36%
+		err: 	13,64%
+---------------------------------------------------------
+---------------------------------------------------------
+relative change in WPM: 	00,00 %
+rank among participants: 	3.

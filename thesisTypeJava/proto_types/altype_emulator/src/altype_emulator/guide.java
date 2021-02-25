@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * Creates and manages Guide for keyboard input
  * @author Samuel Ebner
- *
+ * @version 1.5 - 2021.01.18
  */
 public class guide {
 	/**
