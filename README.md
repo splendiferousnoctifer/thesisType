@@ -1,5 +1,5 @@
 # Project and Thesis repository
-conception and implementation of a five-finger text input device and its system of opration<br><br>
+conception and implementation of a handheld text input device and its system of opration<br><br>
 <a href='https://github.com/splendiferousnoctifer/thesisType/tree/main/thesisTypeJava'> Java Implementation </a> - main folder
 - <a href='https://github.com/splendiferousnoctifer/thesisType/tree/main/thesisTypeJava/proto_types/proto_type_1'> type_1 </a> - similar to telephone keypad
  - <a href='https://github.com/splendiferousnoctifer/thesisType/tree/main/thesisTypeJava/proto_types/proto_type_2'> type_2 </a> - combinations out of 5(discarded)
